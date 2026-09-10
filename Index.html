@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>One Word Substitution</title>
+
+<style>
+body {
+  font-family: Arial;
+  background: #f2f4f7;
+  padding: 20px;
+}
+
+.box {
+  max-width: 500px;
+  margin: auto;
+  background: white;
+  padding: 25px;
+  border-radius: 18px;
+}
+
+h2 {
+  text-align: center;
+}
+
+.option {
+  width: 100%;
+  padding: 16px;
+  margin: 10px 0;
+  font-size: 17px;
+  border: 2px solid #ddd;
+  border-radius: 12px;
+  background: white;
+  text-align: left;
+}
+
+@keyframes greenBlink {
+  0%,100% { background: white; }
+  50% { background: #22c55e; color: white; }
+}
+
+@keyframes redBlink {
+  0%,100% { background: white; }
+  50% { background: #ef4444; color: white; }
+}
+
+.correct {
+  animation: greenBlink 0.3s 6;
+}
+
+.wrong {
+  animation: redBlink 0.3s 6;
+}
+
+#message {
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+
+<h2>📝 One Word Substitution</h2>
+
+<p><b>One who loves books is called:</b></p>
+
+<button class="option" onclick="check(this,0)">
+A) Misanthrope
+</button>
+
+<button class="option" onclick="check(this,1)">
+B) Bibliophile
+</button>
+
+<button class="option" onclick="check(this,2)">
+C) Optimist
+</button>
+
+<button class="option" onclick="check(this,3)">
+D) Philanthropist
+</button>
+
+<div id="message"></div>
+
+</div>
+
+<script>
+
+let answered = false;
+
+function check(button, answer) {
+
+  if (answered) return;
+
+  answered = true;
+
+  let correctAnswer = 1;
+  let options = document.querySelectorAll(".option");
+
+  if (answer === correctAnswer) {
+
+    button.classList.add("correct");
+
+    document.getElementById("message").innerHTML =
+      "✅ Correct!";
+
+  } else {
+
+    button.classList.add("wrong");
+
+    options[correctAnswer].classList.add("correct");
+
+    document.getElementById("message").innerHTML =
+      "❌ Wrong!";
+
+  }
+}
+
+</script>
+
+</body>
+</html>
